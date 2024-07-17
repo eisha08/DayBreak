@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     
     extend: {fontFamily: {
-      sans: ['"Playwrite CU"', 'sans-serif'], 
+      'sans': ['"Playwrite CU"', 'sans-serif'],
+      'Poppins':['"Poppins"','sans'] ,
     },},
   },
   plugins: [],
