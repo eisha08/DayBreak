@@ -4,7 +4,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    
+    extend: {fontFamily: {
+      sans: ['"Playwrite CU"', 'sans-serif'], 
+    },},
   },
   plugins: [],
 }
