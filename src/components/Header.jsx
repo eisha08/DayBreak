@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { FaUser } from "react-icons/fa6";
-
+import {Link} from 'react-router-dom'
 function Header() {
   return (
     <div className="nav bg-yellow-200 w-[100vw]">
@@ -16,21 +16,21 @@ function Header() {
         </div>
         <div className="right-side font-Poppins text-lg text-purple-700 flex list-none space-x-8 my-auto">
           <div className="home flex cursor-pointer">
-            <li>Home</li>
+            <Link aria-current="page" to="/">Home</Link>
           </div>
           <div className="about flex cursor-pointer">
-            <li>About</li>
+            <Link aria-current="page" to="/about">About</Link>
           </div>
           <div className="register flex cursor-pointer">
-            <li>Register</li>
+            <Link aria-current="page" to="/todo">ToDo</Link>
           </div>
           <div className="login flex cursor-pointer">
-            <li>Login </li>
+            <Link aria-current="page" to="/login" >Login</Link>
           </div>
           <div className="logout  cursor-pointer flex flex-row space-x-2">
             <div className="text-div flex">
               {" "}
-              <li> Logout </li>
+              <Link>Logout</Link>
             </div>
             <div className="img-div flex py-1">
               <FaUser />
