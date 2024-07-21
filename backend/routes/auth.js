@@ -7,10 +7,10 @@ router.post("/register",async(req,res)=>{
         const {email,username,password}=req.body;
         const hashpassword=bycrypt.hashSync(password);
         const user=new User({email,username,password:hashpassword});
-        await user.save().then(()=>res.status(200).json({user:user}))
+        await user.save().then(()=>res.status(200).json({message:"Sign up successfully"}))
     }catch(error){
         console.log(error);
-        res.status(400).json({message:"User already existed"})
+        res.status(200).json({message:"User already existed"})
     }
 })
 //signin
@@ -27,9 +27,10 @@ router.post("/login",async(req,res)=>{
         )
         if(!isPass){
             res.status(400).json({message:"Incorrect Password"});
-        }
+        }else{
         const{password,...others}=user._doc;
         res.status(200).json({others});
+        }
     }
 catch(error){
     console.log(error);
