@@ -2,7 +2,20 @@ import React from "react";
 import logo from "../assets/logo.png";
 import { FaUser } from "react-icons/fa6";
 import {Link} from 'react-router-dom'
+import {useSelector} from "react-redux"
+import { useDispatch} from "react-redux";
+  
+import { authActions } from "../storage/storage";
 function Header() {
+  const dispatch=useDispatch();
+  const user  = useSelector((state)=>state.auth?.user);
+  console.log(user);
+  const isLoggedIn = useSelector((state) => state.auth?.isLoggedIn);
+  //console.log(isLoggedIn);
+ const logout=()=>{
+  sessionStorage.clear("id");
+  dispatch(authActions.logout())
+ }
   return (
     <div className="nav bg-yellow-200 w-[100vw]">
       <div className="head  w-full px-6  flex justify-between ">
@@ -24,11 +37,14 @@ function Header() {
           <div className="register flex cursor-pointer">
             <Link aria-current="page" to="/todo">ToDo</Link>
           </div>
-          <div className="login flex cursor-pointer">
+          {!isLoggedIn && <>  <div className="login flex cursor-pointer">
+         
             <Link aria-current="page" to="/login" >Login</Link>
           </div>
+          </>}
+          {isLoggedIn && (
           <div className="logout  cursor-pointer flex flex-row space-x-2">
-            <div className="text-div flex">
+            <div className="text-div flex" onClick={logout}>
               {" "}
               <Link>Logout</Link>
             </div>
@@ -36,6 +52,7 @@ function Header() {
               <FaUser />
             </div>
           </div>
+          )}
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ router.post("/register",async(req,res)=>{
         const {email,username,password}=req.body;
         const hashpassword=bycrypt.hashSync(password);
         const user=new User({email,username,password:hashpassword});
-        await user.save().then(()=>res.status(200).json({message:"Sign up successfully"}))
+        await user.save().then(()=>res.status(200).json({message:"Sign up successfully"})).catch((err)=>{console.log(err)})
     }catch(error){
         console.log(error);
         res.status(200).json({message:"User already existed"})
@@ -16,9 +16,10 @@ router.post("/register",async(req,res)=>{
 //signin
 router.post("/login",async(req,res)=>{
     try{
+        console.log(req.body);
         const user=await User.findOne({email:req.body.email})
         if(!user){
-            res.status(400).json({message:"Please Resgister First!!"});
+            res.status(200).json({message:"Please Resgister First!!"});
 
         }
         const isPass=bycrypt.compareSync(
@@ -26,7 +27,7 @@ router.post("/login",async(req,res)=>{
             user.password
         )
         if(!isPass){
-            res.status(400).json({message:"Incorrect Password"});
+            res.status(200).json({message:"Incorrect Password"});
         }else{
         const{password,...others}=user._doc;
         res.status(200).json({others});
@@ -34,7 +35,7 @@ router.post("/login",async(req,res)=>{
     }
 catch(error){
     console.log(error);
-    res.status(400).json({message:"Register First"})
+    res.status(200).json({message:"Register First"})
 }
 }
 )

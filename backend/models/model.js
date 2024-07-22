@@ -10,12 +10,11 @@ const listSchema=new mongoose.Schema({
     Deadline:{
         type:Date
     },
-    user:[
-        {
-            type:mongoose.Types.ObjectId,
-            ref:"User"
-        }
-    ],
+    user:
+    {
+        type:mongoose.Types.ObjectId,
+        ref:"User"
+    },
 },
 {timestamps:true}
 )

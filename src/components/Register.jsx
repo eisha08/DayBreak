@@ -25,12 +25,14 @@ function Register() {
       alert(response.data.message)
       console.log(response.data)
       setInputs({ email: "", username: "", password: "" });
+    
       history("/login")
       }
-    })
+})
+}
     //console.log(inputs);
    
-  };
+  
   return (
     <div className="main h-[100vh] w-[100%] bg-yellow-200">
       <div className="login flex flex-col items-center justify-center">
