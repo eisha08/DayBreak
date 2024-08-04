@@ -1,6 +1,10 @@
 {
   "name": "day-break",
   "version": "0.1.0",
+  "main": "app.js",
+  "engines": {
+    "node": "18.x"
+  },
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
@@ -17,10 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eslintConfig": {
     "extends": [
